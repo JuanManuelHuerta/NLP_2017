@@ -3,10 +3,23 @@ import json
 import numpy
 from nltk import sent_tokenize, word_tokenize, pos_tag
 import unicodedata
+import re
+
+def custom_word_tokenize(my_string):
+    s0=my_string
+    s1=re.sub(r'([a-z])\.([A-Z])',r'\1 \2',s0)
+    s2=re.sub(r'[;:\s \(\)\-]+',r' ',s1.lower())
+    s3=re.sub(r'\. ',r' ',s2)
+    words=s3.split(" ")
+    return words
+
 
 
 
 ## Open the file, scan the data, keep review texts.
+
+
+
 
 fp=open("../reviews_Automotive_5.json","rt")
 all_data=[]
@@ -42,7 +55,8 @@ print "Median score", numpy.median(scores)
 ###  Take a peek at the data
 for review in reviews_text:
     print review
-    print word_tokenize(review)
+    print "nltk tokenizer", word_tokenize(review)
+    print "custom tokenizer", custom_word_tokenize(review)
 
 
 ## TEXT PREPROCESSING
