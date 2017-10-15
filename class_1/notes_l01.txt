@@ -1,0 +1,64 @@
+
+
+Juan M. Huerta
+jmhuertany@gmail.com
+
+
+site to the review data:
+http://jmcauley.ucsd.edu/data/amazon/
+
+Class 1:
+
+I.0. (a) Intros 
+     (b)  Outline course: "what is text mining?"; show one review 
+     (c) And overview of course:  (i) Text processing, (ii) Statistical methods and POS (iii) Machine Learning. Focus on  class 1  
+     (d) overview of data, tools, language, libraries, github
+     (e) Quick python refresher                          [L01S00]
+I.1. A product-review corpus
+     (a) Download data [http://jmcauley.ucsd.edu/data/amazon/] 
+     (b) take a peek  
+     (c) Structured/unstructured data
+     (d) what kind of questions can we answer? 
+I.2 Initial analysis of the corpus: 
+    (a) initial statistics of a blob of reviews: counts, frequency: reviewers, stars, 
+    (b) products; counts and structured aspect  
+    (c) reviewers                                        [L01S01]
+I.3. Text preprocessing and cleanup in Python: 
+     (a)  Simple sentence tokenization
+     (b) Word Tokenization
+     (c) lower casing, symbols and numbers, punctuation, regular expressions, tokenization (splitting) [L01S02]
+I.4. Basic statistics: number of sentences per review, number of words per review, histograms, scatter plots.  [L01S03]
+I.5  Prelim: NLTK, download, overview
+I.6. Unigrams statistics, filtering stop words, building dictionaries (python)  [L01S04]
+     https://github.com/Alir3z4/stop-words/blob/master/english.txt
+     brew install curl
+     curl https://raw.githubusercontent.com/Alir3z4/stop-words/master/english.txt > stop_words.txt
+I.7. The vector representation, distance and similarity between sentences and documents [L01S05]
+
+
+Class 2: More on Bag of words, Multi categories, structured and unstructured data, and intro to Statistical methods
+
+II.1. Part of Speech overview
+II.2. Use NLTK or  get Spacy:  [pip install -U  spacy --user]
+II.3. Spacy library Part 1 https://spacy.io/docs/usage/lightning-tour 
+II.4 spaCy library  part 2 POS continued
+II.5. Building category specific dictionaries, product specific dictionaries, what are common words? what are different words? 
+II.6. Using the review score: what words are indicators of good versus bad scores across categories? in a category?   What are the drivers? how about per product?
+II.7. Vector based approaches continued: bags of words, cosine similarities; binary feature representations; 
+II.8. Bayes Theorem
+II.9. Unigram language models, bigram language models
+
+Class 3: Statistical and Machine Learning Techniques
+
+III.1. Suppervised classification methods Logistic regression
+III.2 Naive Bayes
+III.3 More on Ngrams
+III.4. Gensim
+
+
+
+=====
+
+
+https://github.com/cytora/pycon-nlp-in-10-lines
+
