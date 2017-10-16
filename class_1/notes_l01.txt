@@ -39,10 +39,10 @@ I.3. Text preprocessing and cleanup in Python:
 	 Regular expressions substitute:	 re.sub(r'',r'',string)
 	 How good can a tokenizer become?
 
-I.4. Basic statistics: number of sentences per review, number of words per review  [L01S03]
-     Use our custom tokenizer to build a dictionary per product
+I.4. Basic statistics: number of words per review  
+     Use our custom tokenizer to build a single dictionary and a dictionary per score level  [L01S03]
 
-I.5  Prelim: NLTK, download, overview
+I.5  (Prelim: NLTK, download, overview)
 
 I.6. Unigrams statistics, filtering stop words, building dictionaries (python)  [L01S04]
      https://github.com/Alir3z4/stop-words/blob/master/english.txt
