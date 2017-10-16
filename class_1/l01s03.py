@@ -4,6 +4,7 @@ import numpy
 from nltk import sent_tokenize, word_tokenize, pos_tag
 import unicodedata
 import re
+import operator
 
 def custom_word_tokenize(my_string):
     s0=my_string
@@ -47,13 +48,33 @@ print "Median score", numpy.median(scores)
 
 ###  Take a peek at the data
 master_dictionary={}
-dictionary_per_socre={}
+dictionary_per_score={}
 
-for review in reviews_text:
-    print review
-    print "custom tokenizer", custom_word_tokenize(review)
+for review_data in all_data:
+    review=unicodedata.normalize('NFKD', review_data['reviewText']).encode('ascii','ignore')
+    score=review_data['overall']
+    if not score in dictionary_per_score:
+        dictionary_per_score[score]={}
+    words=custom_word_tokenize(review)    
+    for word in words:
+        if not word in master_dictionary:
+            master_dictionary[word]=0
+        if not word in dictionary_per_score[score]:
+            dictionary_per_score[score][word]=0
+        master_dictionary[word]+=1
+        dictionary_per_score[score][word]+=1
+#master_dictionary_sorted=sorted(master_dictionary.items(),key=operator.itemgetter(1), reverse=True)
+#print "Big dictionary"
+#for w in master_dictionary_sorted:
+#    print w
 
+for score in dictionary_per_score:
+    print "Score", score
+    dps_sorted=sorted(dictionary_per_score[score].items(),key=operator.itemgetter(1), reverse=True)
+    for word in dps_sorted:
+        print word
 
+        
 
 
 
