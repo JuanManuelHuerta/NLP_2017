@@ -29,38 +29,20 @@ for line in fp:
     stop_words.add(line.rstrip())
 print "Loaded stop words"
 
-fp=gzip.open("../reviews_Movies_and_TV_5.json.gz")
-all_data=[]
-reviews_text=[]
-products_count={}
-for line in fp:
-    review_data=json.loads(line)
-    all_data.append(review_data)
-    review_n=unicodedata.normalize('NFKD', review_data['reviewText']).encode('ascii','ignore')
-    reviews_text.append(review_n)
-    asin=review_data["asin"]
-    if not asin  in products_count:
-        products_count[asin]=0
-    products_count[asin]+=1
-print "Number of reviews",  len(reviews_text)
-print "Number of products",  len(products_count)
-print "Avg reviews per product",  numpy.mean(products_count.values())
-
-only_scores=[]
-for review in all_data:
-    only_scores.append(review['overall'])
-scores=numpy.array(only_scores)
-print "Average score", numpy.mean(scores)
-print "Median score", numpy.median(scores)
-
-###  Take a peek at the data
+#fp=gzip.open("../reviews_Movies_and_TV_5.json.gz")
+fp=gzip.open("../reviews_Beauty_5.json.gz")
+#fp=open("../reviews_Automotive_5.json")
 master_dictionary={}
 dictionary_per_product={}
-for review_data in all_data:
+revs_per_asin={}
+for line in fp:
+    review_data=json.loads(line)
     review=unicodedata.normalize('NFKD', review_data['reviewText']).encode('ascii','ignore')
     asin=review_data['asin']
     if not asin in dictionary_per_product:
         dictionary_per_product[asin]={}
+        revs_per_asin[asin]=0
+    revs_per_asin[asin]+=1
     words=custom_word_tokenize(review)    
     for word in words:
         if not word in stop_words:
@@ -70,16 +52,12 @@ for review_data in all_data:
                 dictionary_per_product[asin][word]=0
             master_dictionary[word]+=1
             dictionary_per_product[asin][word]+=1
-#master_dictionary_sorted=sorted(master_dictionary.items(),key=operator.itemgetter(1), reverse=True)
-#print "Big dictionary"
-#for w in master_dictionary_sorted:
-#    print w
 
 top_words={}
 InverseDocumentFrequency={}
 
 for asin in dictionary_per_product:
-
+    
     for word in dictionary_per_product[asin]:
 
         if not word in InverseDocumentFrequency:
@@ -90,7 +68,6 @@ for asin in dictionary_per_product:
 
 
 for asin in dictionary_per_product:
-    print "ASIN", asin
     top_words[asin]=[]
 
     for word in  dictionary_per_product[asin]:
@@ -102,8 +79,9 @@ for asin in dictionary_per_product:
         top_words[asin].append(word)
         if len(top_words[asin])>25:
             break
-
-    print top_words[asin]
+    if revs_per_asin[asin]>20:
+        print "ASIN", asin
+        print top_words[asin]
         
 
 
