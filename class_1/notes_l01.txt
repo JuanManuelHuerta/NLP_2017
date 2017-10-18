@@ -50,7 +50,7 @@ I.6. Unigrams statistics, filtering stop words, building dictionaries (python)  
      curl https://raw.githubusercontent.com/Alir3z4/stop-words/master/english.txt > stop_words.txt
      Remove stop words
 
-I.7.   TF-IDF  Term Frequency Inverse document frequency  [L01S05]
+I.7.   TF-IDF  Term Frequency Inverse document frequency: per product  [L01S05]
        https://en.wikipedia.org/wiki/Tf%E2%80%93idf
 
 
