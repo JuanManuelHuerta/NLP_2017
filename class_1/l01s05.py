@@ -30,8 +30,8 @@ for line in fp:
 print "Loaded stop words"
 
 #fp=gzip.open("../reviews_Movies_and_TV_5.json.gz")
-fp=gzip.open("../reviews_Beauty_5.json.gz")
-#fp=open("../reviews_Automotive_5.json")
+#fp=gzip.open("../reviews_Beauty_5.json.gz")
+fp=open("../reviews_Automotive_5.json")
 master_dictionary={}
 dictionary_per_product={}
 revs_per_asin={}
@@ -71,7 +71,7 @@ for asin in dictionary_per_product:
     top_words[asin]=[]
 
     for word in  dictionary_per_product[asin]:
-        dictionary_per_product[asin][word]=dictionary_per_product[asin][word]*(1.0/InverseDocumentFrequency[word])
+        dictionary_per_product[asin][word]=dictionary_per_product[asin][word]*math.log(len(dictionary_per_product)/InverseDocumentFrequency[word])
 
     dpp_sorted=sorted(dictionary_per_product[asin].items(),key=operator.itemgetter(1), reverse=True)
 
