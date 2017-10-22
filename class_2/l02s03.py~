@@ -66,7 +66,7 @@ for score in all_counts:
         all_counts[score][word]/=float(Tot_words)
 
 for word in word_counts:
-    if word_counts[word]>200.0:
+    if word_counts[word]>100.0:
         p=[]
         for r in all_counts:
             if word in all_counts[r]:
