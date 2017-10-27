@@ -1,0 +1,56 @@
+
+
+Juan M. Huerta
+jmhuertany@gmail.com
+
+
+Class 3: Vector representation, cosine similarity, document clustering
+
+
+III.0.  Overview of class 3:
+
+II.6   TF-IDF  Term Frequency Inverse document frequency: per product  
+       https://en.wikipedia.org/wiki/Tf%E2%80%93idf
+       (a)      Introduce Scenario # 2
+          Challenge Scenario # 2:  Identify the product space, Clustering
+       (b) Switching to Product based analysis                                    [l02s04]
+
+II.7. Document Similarity (Intro and Overview for next class)
+      (a) Similarity of word distributions
+      (b) Cosine similarity
+      (c) Projections (the problem of synonimity)
+      (d) Complexity
+
+       Assignment/Next Class: Cluster products that are similar; produce a visualization
+
+
+
+
+=================
+
+
+NLTK:
+http://www.nltk.org/
+
+Entropy:
+https://en.wikipedia.org/wiki/Entropy_(information_theory)
+https://en.wikipedia.org/wiki/Mutual_information
+
+
+Bayes Theorem:
+https://betterexplained.com/articles/an-intuitive-and-short-explanation-of-bayes-theorem/
+
+
+Computational Complexity:
+https://en.wikipedia.org/wiki/Computational_complexity_theory
+https://en.wikipedia.org/wiki/Big_O_notation
+
+
+
+TF-IDF
+http://trimc-nlp.blogspot.com/2013/04/tfidf-with-google-n-grams-and-pos-tags.html
+
+
+KL Divergence
+https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained
+
