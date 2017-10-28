@@ -91,7 +91,8 @@ for asin in dictionary_per_product:
         if len(top_words[asin])>30:
             break
 
-    print asin, top_words[asin]
+    print "ASIN", asin
+    print top_words[asin]
         
 
 

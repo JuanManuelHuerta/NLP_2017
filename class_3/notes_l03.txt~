@@ -32,7 +32,6 @@ III.3  Graph Communities and Visualization					 [l03s02]
        html  page
        http://bl.ocks.org/ccmcc/5182685
        curl  http://bl.ocks.org/ccmcc/raw/5182685/ > index.html
-       python -m SimpleHTTPServer
 
 
 III.4  Dealing with Synonims, LSTM's and other interesting topics
