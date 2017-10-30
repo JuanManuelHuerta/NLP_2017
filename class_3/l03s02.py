@@ -100,6 +100,8 @@ fo2=open("nodes.csv","wt")
 fo1.write("source,target,type\n")
 fo2.write("node,group\n")
 
+##  for every pair of product fid the document similarity
+
 for asin1 in dictionary_per_product:
     similarity_graph[asin1]={}
     for asin2 in dictionary_per_product:

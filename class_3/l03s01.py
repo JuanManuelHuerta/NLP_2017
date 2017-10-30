@@ -22,12 +22,15 @@ def custom_word_tokenize(my_string):
 
 ## Open the file, scan the data, keep review texts.
 
-
+##  STEP A. LOAD THE STOP WORDS
 fp=open("stop_words.txt","rt")
 stop_words=set()
 for line in fp:
     stop_words.add(line.rstrip())
 print "Loaded stop words"
+
+
+## STEP B:  FIND THE MOST COMMON PRODUCTS
 
 #fp=gzip.open("../reviews_Movies_and_TV_5.json.gz")
 fp=gzip.open("../reviews_Beauty_5.json.gz")
@@ -43,6 +46,9 @@ for line in fp:
     if not asin in product_count:
         product_count[asin]=0
     product_count[asin]+=1
+
+## STEP c:  BUild word dictionaries  for most common products, and keep track of words per product
+
 
 fp=gzip.open("../reviews_Beauty_5.json.gz")        
 for line in fp:
@@ -70,13 +76,15 @@ for line in fp:
 top_words={}
 InverseDocumentFrequency={}
 
+## Step d.:Keep track of the IDF
+
 for asin in dictionary_per_product:
     for word in dictionary_per_product[asin]:
         if not word in InverseDocumentFrequency:
             InverseDocumentFrequency[word]=0.0
         InverseDocumentFrequency[word]+=1.0
 
-
+# Step e: for each product, foreach word calculate its TFIDF and keep those abovea threshold
 
 for asin in dictionary_per_product:
     top_words[asin]=set()
@@ -87,7 +95,6 @@ for asin in dictionary_per_product:
             tf_idf=((float(dictionary_per_product[asin][word])/words_per_product[asin])*math.log(len(dictionary_per_product)/InverseDocumentFrequency[word]))
             if tf_idf>=0.0001:
                 top_words[asin].add((word,tf_idf))
-
 
     print asin, top_words[asin]
         

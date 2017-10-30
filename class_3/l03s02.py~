@@ -97,8 +97,8 @@ nodes=set()
 similarity_graph={}
 fo1=open("links.csv","wt")
 fo2=open("nodes.csv","wt")
-fo1.write("source,target,type")
-fo2.write("node,group")
+fo1.write("source,target,type\n")
+fo2.write("node,group\n")
 
 for asin1 in dictionary_per_product:
     similarity_graph[asin1]={}
@@ -107,10 +107,10 @@ for asin1 in dictionary_per_product:
             d=custom_similarity(top_words[asin1],top_words[asin2])
             if d>0.44:
                 similarity_graph[asin1][asin2]=d
-                fo1.write( asin1+","+ asin2+",type1")
+                fo1.write( asin1+","+ asin2+",type1\n")
                 nodes.add(asin1)
                 nodes.add(asin2)
             
 
 for node in nodes:
-    fo2.write(node+",group1")
+    fo2.write(node+",group1\n")

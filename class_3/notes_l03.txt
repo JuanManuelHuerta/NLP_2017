@@ -5,6 +5,7 @@ jmhuertany@gmail.com
 
 
 Class 3: Vector representation, cosine similarity, document clustering
+       we will use python's SimpleHTTPServer 
 
 
 III.0.  Overview of first 2 classes. 
@@ -16,9 +17,9 @@ III.1   TF-IDF  Term Frequency Inverse document frequency: per product
        https://en.wikipedia.org/wiki/Tf%E2%80%93idf
        (a)      Introduce Scenario # 2
           Challenge Scenario # 2:  Identify the product space, Clustering
-       (b) Switching to Product based analysis                                    [l02s04]
+       (b) Switching to Product based analysis                                    [l03s01]
 
-III.2. Document Similarity (Intro and Overview for next class)                    [l03s01]
+III.2. Document Similarity (Intro and Oeverview for next class)                    [l03s02]
       (a) Similarity of word distributions
       (b) Cosine similarity
       (c) Projections (the problem of synonimity)
@@ -27,7 +28,7 @@ III.2. Document Similarity (Intro and Overview for next class)                  
       Similarity matrix
       Compute a similarity graph
 
-III.3  Graph Communities and Visualization					 [l03s02]
+III.3  Graph Commeunities and Visualization				
        d3 
        html  page
        http://bl.ocks.org/ccmcc/5182685
