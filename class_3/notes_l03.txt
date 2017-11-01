@@ -4,12 +4,12 @@ Juan M. Huerta
 jmhuertany@gmail.com
 
 
-Class 3: Vector representation, cosine similarity, document clustering
-       we will use python's SimpleHTTPServer 
+Class 3: Vector representation, cosine similarity, document clustering, TFIDF
+       we will use python's SimpleHTTPServer, and d3  !!
 
 
 III.0.  Overview of first 2 classes. 
-	Overview of class 3: switch scenario
+	Overview of class 3: switch scenario,  focus on products (many of them!). No natural taxonomy or hierarcy. 
 
 
 
@@ -28,11 +28,12 @@ III.2. Document Similarity (Intro and Oeverview for next class)                 
       Similarity matrix
       Compute a similarity graph
 
-III.3  Graph Commeunities and Visualization				
+III.3  Graph Communities and Visualization				
        d3 
        html  page
        http://bl.ocks.org/ccmcc/5182685
        curl  http://bl.ocks.org/ccmcc/raw/5182685/ > index.html
+       (edit index.html)
        python -m SimpleHTTPServer
 
 
@@ -41,10 +42,6 @@ III.4  Dealing with Synonims, LSTM's and other interesting topics
 
 
 III.5 Summary of the class
-
-
-
-
 
 
 

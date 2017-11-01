@@ -16,18 +16,13 @@ def custom_similarity(a,b):
     return d
 
 ## Open the file, scan the data, keep review texts.
-
-
 fp=open("stop_words.txt","rt")
 stop_words=set()
 for line in fp:
     stop_words.add(line.rstrip())
 print "Loaded stop words"
 
-#fp=gzip.open("../reviews_Movies_and_TV_5.json.gz")
 fp=gzip.open("../reviews_Beauty_5.json.gz")
-#fp=open("../reviews_Automotive_5.json")
-
 master_dictionary={}
 dictionary_per_product={}
 product_count={}
@@ -50,7 +45,6 @@ for line in fp:
         dictionary_per_product[asin]={}
         words_per_product[asin]=0.0
     words=nltk.word_tokenize(review)    
-
     for word_r in words:
         word=word_r.lower()
         if not word in stop_words:
@@ -64,37 +58,31 @@ for line in fp:
 
 top_words={}
 InverseDocumentFrequency={}
-
 for asin in dictionary_per_product:
     for word in dictionary_per_product[asin]:
         if not word in InverseDocumentFrequency:
             InverseDocumentFrequency[word]=0.0
         InverseDocumentFrequency[word]+=1.0
 
-
-
 for asin in dictionary_per_product:
     top_words[asin]=set()
-
     for word in  dictionary_per_product[asin]:
         if dictionary_per_product[asin][word]>=10.0:
-
             tf_idf=((float(dictionary_per_product[asin][word])/words_per_product[asin])*math.log(len(dictionary_per_product)/InverseDocumentFrequency[word]))
             if tf_idf>=0.0001:
-                #top_words[asin].add((word,tf_idf))
                 top_words[asin].add(word)
 
-
 #    print asin, top_words[asin]
+
+## PART 2:
+
 nodes=set()        
 similarity_graph={}
 fo1=open("links.csv","wt")
 fo2=open("nodes.csv","wt")
 fo1.write("source,target,type\n")
 fo2.write("node,group\n")
-
 ##  for every pair of product fid the document similarity
-
 for asin1 in dictionary_per_product:
     similarity_graph[asin1]={}
     for asin2 in dictionary_per_product:
@@ -105,7 +93,5 @@ for asin1 in dictionary_per_product:
                 fo1.write( asin1+","+ asin2+",type1\n")
                 nodes.add(asin1)
                 nodes.add(asin2)
-            
-
 for node in nodes:
     fo2.write(node+",group1\n")

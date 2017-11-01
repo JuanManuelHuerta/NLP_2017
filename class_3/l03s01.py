@@ -1,16 +1,11 @@
 import sys
 import json
-import numpy
-from nltk import sent_tokenize, word_tokenize, pos_tag
 import unicodedata
-import re
 import operator
 import math
 import gzip
 import nltk
 
-
-## Open the file, scan the data, keep review texts.
 
 ##  STEP A. LOAD THE STOP WORDS
 fp=open("stop_words.txt","rt")
@@ -22,10 +17,7 @@ print "Loaded stop words"
 
 ## STEP B:  FIND THE MOST COMMON PRODUCTS
 
-#fp=gzip.open("../reviews_Movies_and_TV_5.json.gz")
 fp=gzip.open("../reviews_Beauty_5.json.gz")
-#fp=open("../reviews_Automotive_5.json")
-
 master_dictionary={}
 dictionary_per_product={}
 product_count={}
@@ -38,8 +30,6 @@ for line in fp:
     product_count[asin]+=1
 
 ## STEP c:  BUild word dictionaries  for most common products, and keep track of words per product
-
-
 fp=gzip.open("../reviews_Beauty_5.json.gz")        
 for line in fp:
     review_data=json.loads(line)
@@ -65,9 +55,7 @@ for line in fp:
 
 top_words={}
 InverseDocumentFrequency={}
-
 ## Step d.:Keep track of the IDF
-
 for asin in dictionary_per_product:
     for word in dictionary_per_product[asin]:
         if not word in InverseDocumentFrequency:
@@ -75,17 +63,14 @@ for asin in dictionary_per_product:
         InverseDocumentFrequency[word]+=1.0
 
 # Step e: for each product, foreach word calculate its TFIDF and keep those abovea threshold
-
 for asin in dictionary_per_product:
     top_words[asin]=set()
-
     for word in  dictionary_per_product[asin]:
         if dictionary_per_product[asin][word]>=10.0:
 
             tf_idf=((float(dictionary_per_product[asin][word])/words_per_product[asin])*math.log(len(dictionary_per_product)/InverseDocumentFrequency[word]))
             if tf_idf>=0.0001:
                 top_words[asin].add((word,tf_idf))
-
     print asin, top_words[asin]
         
 
