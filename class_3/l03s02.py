@@ -9,13 +9,6 @@ import math
 import gzip
 import nltk
 
-def custom_word_tokenize(my_string):
-    s0=my_string
-    s1=re.sub(r'([a-z])\.([A-Z])',r'\1 \2',s0)
-    s2=re.sub(r'[;:\s \(\)\-\!\?]+',r' ',s1.lower())
-    s3=re.sub(r'\. ',r' ',s2)
-    words=s3.split(" ")
-    return words
 
 def custom_similarity(a,b):
     i=len(a.intersection(b))
